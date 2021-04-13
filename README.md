@@ -1,4 +1,4 @@
-# AuditoriaLAboratorios README.md
+# AuditoriaLaboratorios README.md
 
 Aplicación web elaborada durante el Servicio Social del prestador, que apoya a la auditoria que se realiza 
 en cada uno de los laboratorios de la División de Ciencias Básicas e Ingeniería de la UAM-A.
