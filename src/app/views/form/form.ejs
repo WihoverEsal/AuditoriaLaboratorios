@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cedula de Inspeccion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand mx-auto">Cédula de Inspección</a>
+    </nav>
+    <div id="logo">
+        <br>
+        <img align="right" src="/images/logo-cbi.gif" height="70" />
+        <br><br><br>
+    </div>
+    <div class="container-fluid"> 
+        <div class="row">
+            
+            <div class="col-md-8 mt-5 card">
+                <form action="/form" method="post" class="card-body" name="formInspeccion">
+                    <table class="table table-striped">
+                        <strong class="card-title">Infraestructura</strong>
+                        <tr>
+                            <td>Área Responsable</td>
+                            <td>
+                                <select name="areaResp" id="areaResp" onchange="otraArea()" class="form-control">
+                                    <option value="direccion" selected>Dirección</option>
+                                    <option value="cb">Ciencias Básicas</option>
+                                    <option value="electronica">Electrónica</option>
+                                    <option value="sistemas">Sistemas</option>
+                                    <option value="materiales">Materiales</option>
+                                    <option value="energia">Energía</option>
+                                    <option value="otra">Otra</option>
+                                </select>
+                                <div id="divArea" style="display: none" >
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Especificar" value="" id="especificaArea" name="especificaArea" maxlength="40">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class = "table table-striped">
+                        <tr>                   
+                            <td colspan="2">Nombre del espacio</td>
+                            <td>
+                                <div id="dirOtra" style="display:none">
+                                    <input type="text" class="form-control" placeholder="Nombre del espacio" value="" id="nombreEspacio" name="nombreEspacio" size="100">
+                                </div>
+                                <div id="divNomEspacio" style="display:none">
+                                    <input type="text" id="nomEspacio" name="nomEspacio"></label>
+                                </div>
+                                <div id="cbEspacio" style="display:none">
+                                    <select name="cbAulas" id="cbAulas" onchange="ubicacionCB()" class="form-control">
+                                        <option value="aula1">LABORATORIO DEL CUERPO RÍGIDO Y OSCILADOR</option>
+                                        <option value="aula2">LABORATORIO DE QUÍMICA GENERAL Y PROCESOS ANALÍTICOS</option>
+                                        <option value="aula3">LABORATORIO DE MICROBIOLOGÍA APLICADA</option>
+                                        <option value="aula4">LABORATORIO DE QUÍMICA GENERAL Y ORGÁNICAS</option>
+                                        <option value="aula5">LABORATORIO DE QUÍMICA GENERAL E INORGÁNICA</option>
+                                        <option value="aula6">LABORATORIO DE QUÍMICA GENERAL 1</option>
+                                        <option value="aula7">LABORATORIO DE QUÍMICA GENERAL 2</option>
+                                        <option value="aula8">LABORATORIO DE QUÍMICA GENERAL 3</option>
+                                        <option value="aula9">LABORATORIO DE QUÍMICA GENERAL 4</option>
+                                        <option value="aula10">LABORATORIO DE MOVIMIENTO DE UNA PARTÍCULA</option>
+                                        <option value="aula11">LABORATORIO DE NUEVAS TECNOLOGÍAS</option>
+                                        <option value="aula12">LABORATORIO DE ELECTRICIDAD Y MAGNETISMO</option>
+                                    </select>
+                                </div>
+                                <div id="electronicaEspacio" style="display:none">
+                                    <select name="electronicaAulas" id="electronicaAulas" onchange="ubicacionElectronica()"  class="form-control">
+                                        <option value="aula1" >LABORATORIO DE REDES A</option>
+                                        <option value="aula2">LABORATORIO DE REDES B</option>
+                                        <option value="aula3">LABORATORIO DE DIGITALES</option>
+                                        <option value="aula4">LABORATORIO DE ELECTRÓNICA</option>
+                                        <option value="aula5">LABORATORIO DE COMUNICACIONES</option>
+                                        <option value="aula6">LABORATORIO DE POTENCIA</option>
+                                        <option value="aula7">AULA AUDIOVISUAL</option>
+                                        <option value="aula8">AULA AUDIOVISUAL</option>
+                                        <option value="aula9">AULA AUDIOVISUAL</option>                                            
+                                    </select>
+                                </div>
+                                <div id="sisEspacio" style="display:none">
+                                    <select name="sisAulas" id="sisAulas" onchange="ubicacionSistemas()" class="form-control">
+                                        <option value="aula1">AULA G-206</option>
+                                        <option value="aula2">AULA G-208</option>
+                                        <option value="aula3">SALA ADA BYRON</option>
+                                        <option value="aula4">SALA CHARLES BABBAGE</option>
+                                        <option value="aula5">SALON E-306</option>
+                                        <option value="aula6">CENTRO DE INVESTIGACIÓN Y FORMACIÓN INTEGRAL DE INGENIERÍA INDUSTRIAL (C.I.F.I.I.I.)</option>
+                                        <option value="aula7">SALÓN E309</option>                                                                                    
+                                    </select>
+                                </div>
+
+                                <div id="matEspacio" style="display:none" onchange="ubicacionMat()">
+                                    <select name="matAulas" id="matAulas"  class="form-control">
+                                        <option value="aula1">LABORATORIO DE CONSTRUCCIÓN</option>
+                                        <option value="aula2">LABORATORIO DE TOPOGRAFÍA</option>
+                                        <option value="aula3">LABORATORIO DE ESTRUCTURAS</option>
+                                        <option value="aula4">LABORATORIO DE GEOTECNIA</option>
+                                        <option value="aula5">ÁREA DE MICROSCOPIOS</option>
+                                        <option value="aula6">ÁREA DE DESBASTADORAS</option>
+                                        <option value="aula7">ÁREA DE PULIDORAS</option>
+                                        <option value="aula8">ÁREA DE ATAQUE QUÍMICO</option>
+                                        <option value="aula9">ÁREA DE CORTE</option>
+                                        <option value="aula10">ÁREA DE HORNOS</option>
+                                        <option value="aula11">ÁREA DE MONTADORAS</option>
+                                        <option value="aula12">PLANTA DE PROCESOS METALÚRGICOS Y MATERIALES (PPMM) 1</option>
+                                        <option value="aula13">PLANTA DE PROCESOS METALÚRGICOS Y MATERIALES (PPMM) 2</option>
+                                        <option value="aula14">LABORATORIO DE OBSERVACIÓN METALOGRÁFICA Y PROPIEDADES MECÁNICAS</option>
+                                        <option value="aula15">LABORATORIO DE INGENIERÍA DE MATERIALES</option> 
+                                        <option value="aula16">LABORATORIO DE MATERIALES AVANZADOS</option>
+                                        <option value="aula17">LABORATORIO INTERDISCIPLINARIO DE ELECTROQUÍMICA E INGENIERÍA DE MATERIALES</option>
+                                        <option value="aula18">LABORATORIO DE SIMULACIÓN DE PROCESOS METALURGICOS DE DOCENCIA</option>
+                                        <option value="aula19">LABORATORIO DE CIENCIA DE LOS MATERIALES (L-CMAT)</option>   
+                                    </select>
+                                </div>
+                           
+                                <div id="energiaEspacio" style="display:none" onchange="ubicacionEnergia()">
+                                    <select name="energiaAulas" id="energiaAulas"  class="form-control">
+                                        <option value="aula1">TALLER DE TERMOFLUIDOS</option>
+                                        <option value="aula2">CENTRO DE DESARROLLO</option>
+                                        <option value="aula3">PLANTA DE TRATAMIENTO</option>
+                                        <option value="aula4">LABORATORIOS DE INGENIERÍA ELÉCTRICA</option>
+                                        <option value="aula5">LABORATORIO DE MECANISMOS</option>
+                                        <option value="aula6">TALLER DE MECÁNICA</option>
+                                        <option value="aula7">TERMOFLUIDOS</option>
+                                        <option value="aula8">LABORATORIO DE FUNDICIÓN</option>
+                                        <option value="aula9">LABORATORIO DE ARENAS</option>
+                                        <option value="aula10">LABORATORIO DE DINÁMICA Y VIBRACIONES</option>
+                                        <option value="aula11">LABORATORIOS 4 Y 5</option>
+                                        <option value="aula12">TALLER DE AIRE</option>                                               
+                                    </select>
+                                </div>
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <td>Tipo</td>
+                            <td>                              
+                                <select name="tipo" id="tipo" onchange="otroTipo();" class="form-control">
+                                    <option value="salon" selected>Salón</option>
+                                    <option value="taller">Taller</option>
+                                    <option value="laboratorio">Laboratorio</option>
+                                    <option value="laboratorio">Laboratorio de cómputo</option>
+                                    <option value="otro">Otro (especifique)</option>                    
+                                </select>
+                                <div id="divEspecificar" style="display: none" >
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Especificar" value="" id="especificaTipo" name="especificaTipo" maxlength="40">
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nota" id="notaTipo" name="notaTipo" maxlength="150" >
+                            </td>                
+                        </tr>
+                    </table>                    
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Ubicación</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Edificio" id="edificio" name="edificio" size="4">
+                            </td>
+                            <td>
+                                <select name="nivel" id="nivel" class="form-control">
+                                    <option value="pb">PB</option>
+                                    <option value="nivel 1">Nivel 1</option>
+                                    <option value="nivel 2">Nivel 2</option>
+                                    <option value="nivel 3">Nivel 3</option>
+                                    <option value="pb y nivel 1">PB y Nivel 1</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Número" size="5" id="numAula" name="numAula" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>                                        
+                                        
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Capacidad <br>(Número de personas)</td>
+                            <td>
+                                <select name="capacidadPersonas" id="capacidadPersonas" class="form-control">
+                                    <option value="1 a 20">1 a 20</option>
+                                    <option value="21 a 30">21 a 30</option>
+                                    <option value="30 a 40">30 a 40</option>
+                                    <option value="mas de 40">mas de 40</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nota" id="notaCapacidad" name="notaCapacidad" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Área Suficiente<sub>(1)</sub></td>
+                            <td>
+                                <select name="areaSuf" id="areaSuf" class="form-control">
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nota" id="notaAreaSuf" name="notaAreaSuf" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br>
+                    <table class="table table-striped">
+                        <strong class="card-title"> Servicios </strong>
+                        <tr>
+                            <td>Iluminación</td>
+                            <td>
+                                <select name="iluminacion" id="iluminacion" class="form-control">
+                                    <option value="natrutal">Natural</option>
+                                    <option value="artificial">Artificial</option>                                    
+                                    <option value="ambos">Ambos</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                Suficiente:
+                            </td>
+                            <td>                                                                    
+                                <label><input type="radio" value="si" name="sufIluminacion" id="sufIluminacion">Si</label>
+                                <label><input type="radio" value="no" name="sufIluminacion" id="sufIluminacion">No</label>                                
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaIluminacion" placeholder="Nota" id="notaIluminacion" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Ventilación</td>
+                            <td>
+                                <select name="ventilacion" id="ventilacion" class="form-control">
+                                    <option value="natrutal">Natural</option>
+                                    <option value="artificial-Ventilador">Artificial - Ventilador</option>
+                                    <option value="artificial-Extractor">Artificial - Extractor</option>
+                                    <option value="artificial-Aire acondicionado">Artificial - Aire acondicionado</option>
+                                    <option value="artificial-No aplica">Artificial - No aplica</option>
+                                    <option value="ambos">Ambos</option>
+                                </select>
+                            </td>
+                            <td>
+                                Suficiente:
+                            </td>
+                            <td>
+                                <label><input type="radio" value="si" name="sufVentilacion" id="sufVentilacion">Si</label>
+                                <label><input type="radio" value="no" name="sufVentilacion" id="sufVentilacion">No</label> 
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaVentilacion" placeholder="Nota" id="notaVentilacion" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Sistema Hidráulico<sub>(2)</sub></td>
+                            <td>
+                                <select name="sisHidraulico" id="sisHidraulico" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="sisHidraulicoReq" id="sisHidraulicoReq" class="form-control" >
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                                            
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSisHi" placeholder="Nota" id="notaSisHi" size="12" maxlength="150">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sistema Sanitario<sub>(3)</sub></td>
+                            <td>
+                                <select name="sisSanitario" id="sisSanitario" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="sisSanitarioReq" id="sisSanitarioReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                                            
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSisSan" placeholder="Nota" id="notaSisSan" size="12" maxlength="150" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sistema de Alerta de Sísmos</td>
+                            <td>
+                                <select name="sisSismos" id="sisSismos" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="sisSismosReq" id="sisSismosReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                    
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSisAl" placeholder="Nota" id="notaSisAl" size="12" maxlength="150" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sistema de Alerta Contra Incendios</td>
+                            <td>
+                                <select name="sisIncendios" id="sisIncendios" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="sisIncendiosReq" id="sisIncendiosReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                                            
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSisIncendio" placeholder="Nota" id="notaSisIncendio" size="12" maxlength="150" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hidrante Contra Incendios<sub>(4)</sub></td>
+                            <td>
+                                <select name="hidrante" id="hidrante" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="hidranteReq" id="hidranteReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                    
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaHidrante" placeholder="Nota" id="notaHidrante" size="12" maxlength="150" >
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>Gases<sub>(6)</sub></td>
+                            <td>
+                                <select name="gases" id="gases" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="gasesReq" id="gasesReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                                            
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaGases" placeholder="Nota" id="notaGases" size="12" maxlength="150">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table class="table table-striped">
+                        <strong class="card-title">Equipamiento</strong>
+                        <tr>
+                            <td>Equipo Audiovisual</td>
+                            <td>
+                                <select name="equipoAud" id="equipoAud" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaEquipoA" placeholder="Nota" id="notaEquipoA" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Mobiliario</td>
+                            <td>
+                                <select name="mobiliario" id="mobiliario" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaMobiliario" placeholder="Nota" id="notaMobiliario" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Internet</td>
+                            <td>
+                                <select name="internet" id="internet" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaInternet" placeholder="Nota" id="notaInternet" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table class="table table-striped">                        
+                        <strong class="card-title">Seguridad e Higiene</strong>
+                        <tr>
+                            <td>Reglamento visible</td>
+                            <td>
+                                <label><input type="radio" value="si" name="reglamento" id="reglamento">Si</label>
+                                <label><input type="radio" value="no" name="reglamento" id="reglamento">No</label>                                
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaReglamento" placeholder="Nota" id="notaReglamento" maxlength="150" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Normas de seguridad visibles</td>
+                            <td>                                
+                                <label><input type="radio" value="si" name="normas" id="normas">Si</label>
+                                <label><input type="radio" value="no" name="normas" id="normas">No</label>                            
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaNormas" placeholder="Nota" id="notaNormas" maxlength="150" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Protocolos visibles</td>
+                            <td>
+                                <label><input type="radio" value="si" name="protocolos" id="protocolos">Si</label>
+                                <label><input type="radio" value="no" name="protocolos" id="protocolos">No</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaProtocolos" placeholder="Nota" id="notaProtocolos" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Orden</td>
+                            <td>
+                                <select name="orden" id="orden" class="form-control">
+                                    <!--option> value="no existe y se requiere">No existe y se requiere</option-->
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaOrden" placeholder="Nota" id="notaOrden" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Limpieza</td>
+                            <td>
+                                <select name="limpieza" id="limpieza" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaLimpieza" placeholder="Nota" id="notaLimpieza" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Extintor<sub>(5)</sub></td>
+                            <td>
+                                <select name="extintor" id="extintor" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="existe">Existe</option>
+                                    <option value="no aplica">No aplica</option>                        
+                                </select>
+                            </td>
+                            <td>
+                                Requiere mantenimiento (si/no) <br>
+                                <select name="extintorReq" id="extintorReq" class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="si">Si</option>                                    
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaExtintor" placeholder="Nota" id="notaExtintor" size="12"maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Aislamiento del Ruido</td>
+                            <td>
+                                <select name="aislamiento" id="aislamiento" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaAislamiento" placeholder="Nota" id="notaAislamiento" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Generación de Ruido</td>
+                            <td>
+                                <select name="generacion" id="generacion" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaGeneracion" placeholder="Nota" id="notaGeneracion" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Accesibilidad</td>
+                            <td>
+                                <select name="accesibilidad" id="accesibilidad" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaAccesibilidad" placeholder="Nota" id="notaAccesibilidad" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Conectividad<sub>(7)</sub></td>
+                            <td>
+                                <select name="conectividad" id="conectividad" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaConectividad" placeholder="Nota" id="notaConectividad" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Regadera de Seguridad</td>
+                            <td>
+                                <select name="regaderaSeg" id="regaderaSeg" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaRegaderaSeg" placeholder="Nota" id="notaRegSeguridad" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Lava Ojos</td>
+                            <td>
+                                <select name="lavaOjos" id="lavaOjos" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaLavaOjos" placeholder="Nota" id="notaLavaOjos" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Señaletica<sub>(8)</sub></td>
+                            <td>
+                                <select name="senaletica" id="senaletica" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSenaletica" placeholder="Nota" id="notaSenaletica" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Rutas de Evacuación</td>
+                            <td>
+                                <select name="rutasEvacuacion" id="rutasEvacuacion" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaRutasEvac" placeholder="Nota" id="notaRutasEvac" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Sistema de Extracción</td>
+                            <td>
+                                <select name="sisExtraccion" id="sisExtraccion" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaSisExtrac" placeholder="Nota" id="notaSisExtrac" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Botiquín de Primeros Auxilios<sub>(9)</sub></td>
+                            <td>
+                                <select name="botiquinPAuxilios" id="botiquinPAuxilios" class="form-control">
+                                    <option value="no existe y se requiere">No existe y se requiere</option>
+                                    <option value="adecuado">Adecuado</option>
+                                    <option value="insuficiente">Insuficiente</option>
+                                    <option value="no aplica">No aplica</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="notaBotiquinPA" placeholder="Nota" id="notaBotiquinPA" maxlength="150" >
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <strong class="card-title">Nombre de acompañantes y observaciones:</strong>                    
+                    <br>
+                    <textarea name="observacion" class="form-control" id="observacion" cols="65" rows="10" placeholder="Escribir aquí nombre de los acompañantes y observaciones"></textarea>
+                    <br><br>
+                    <div class="table-responsive">                    
+                        <table class="table table-striped">                    
+                            <tr>                    
+                                <td>                    
+                                    <strong class="card-title">Elaboro:</strong>                    
+                                </td>
+                                <td>
+                                    <!--input type="text" value="" class="form-control" id="elaboro" name="elaboro" -->
+                                    <select name="elaboro" id="elaboro" class="form-control">
+                                        <% for(var i=0 ; i < form.length ; i++){ %>
+                                            <option value='<%=form[i].personaNombre%>'><%= form[i].personaNombre %></option>
+                                        <% } %>                                        
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--tr>
+                                <td>Acompañantes:</td>
+                                <td>
+                                    <ul style="list-style-type:none" id="lista">
+                                        <% for(var i = 0 ; i < 3 ; i++){ %>
+                                            <li>                                                
+                                                <input type="text" value="" class="form-control" id="acom1" onblur="javascript:inputsDinamicos('i');">
+                                                <br>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </td>
+                            </tr-->
+                        </table>
+                        <!--Acompañantes:
+                        <input type="text" value="" class="form-control" id="acom1"> onblur="inputsDinamicos();">
+                        <div id="container">
+
+                        </div>
+                        <input type="button" class="btn btn-primary" id="btnAdd" value="+"-->
+                    </div>
+                    <br>
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                </form>
+                </div>
+                <div class="col-md-4 mt-5 card">
+                    <p align="justify">
+                    <ol>                        
+                        <li>Depende de la actividad, considerar un espacio de un metro de largo por un  metro de ancho por persona.</li>
+                        <li>Suministro de Agua corriente en tarjas, regaderas, lavabos, etc.</li>
+                        <li>Drenaje en tarjas, lavabos, regaderas, etc.</li>
+                        <li>Mangueras para extinción de incendios.</li>
+                        <li>Dependiendo del uso: Tipo,  A: Basura, Papel, Madera. Tipo B: Líquidos, Grasas. Tipo C: Equipo eléctrico</li>
+                        <li>L.P, Hidrogeno, Helio, Nitrógeno, Aire, Oxigeno, Argón, Mezclas, etc.</li>
+                        <li>Comunicación entre edificios a través de pasillos, techumbres, etc.</li>
+                        <li>Tipos de señales:   
+                            <ul>
+                                <li>1) Rótulos: salón, Laboratorio, Edificio, Oficina, etc.</li>
+                                <li>2) Comunicación Visual:
+                                    <ul>
+                                        <li>a) Señales de color rojo indicando zonas de peligro, ubicación de elementos de emergencia </li>
+                                        <li>b) Señales de color Ámbar indican Precaución, Riesgo eléctrico, sustancias químicas, piso mojado, etc.</li>
+                                        <li>c) Señales de color Azul indica, servicios como baños, teléfono, comedor ó uso de equipo de seguridad personal, etc.</li>
+                                        <li>d) Señales de color Verde indican Zonas de menor riesgo, rutas de evacuación, salidas de emergencia, etc.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Solo contiene material de primeros auxilios, gasa, algodón, vendas, alcohol, material de curación, no contiene medicamentos</li>
+                    </ol>
+                    </p>                    
+                </div>
+            </div>            
+        </div>    
+    <script src="/js/functions.js"></script>    
+</body>
+</html>
